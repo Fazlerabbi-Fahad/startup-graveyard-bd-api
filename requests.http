@@ -1,0 +1,111 @@
+### bdgy-api manual requests (VS Code "REST Client" or JetBrains HTTP client).
+### The REST Client keeps cookies between requests, so log in once and the admin calls work.
+
+@base = http://localhost:4000/api
+@email = admin@example.com
+@password = your-admin-password
+@id = paste-a-case-study-_id-here
+@correctionId = paste-a-correction-_id-here
+
+### ── 1. Health ─────────────────────────────────────────────
+GET {{base}}/health
+
+### ── 2. Auth ───────────────────────────────────────────────
+POST {{base}}/auth/login
+Content-Type: application/json
+
+{ "email": "{{email}}", "password": "{{password}}" }
+
+###
+GET {{base}}/auth/me
+
+###
+POST {{base}}/auth/logout
+
+### ── 3. Admin case studies ─────────────────────────────────
+GET {{base}}/admin/case-studies?status=draft&page=1&limit=20
+
+###
+POST {{base}}/admin/case-studies
+Content-Type: application/json
+
+{
+  "name": "Sample Startup Three",
+  "tagline": "A fictional example created from requests.http.",
+  "atAGlance": { "sector": "Edtech", "city": "Sylhet", "foundedYear": 2018, "shutDownYear": 2022, "fundingAmountUSD": null, "outcome": "Shut down" },
+  "failureReasons": [{ "category": "No product-market fit", "summary": "Fictional." }],
+  "sections": { "executiveSummary": "Fictional summary.", "whatWentWrong": "Fictional problems." },
+  "lessons": ["Talk to users before building."],
+  "sources": [{ "title": "Placeholder", "url": "https://example.com", "publisher": "Example" }]
+}
+
+###
+GET {{base}}/admin/case-studies/{{id}}
+
+###
+PUT {{base}}/admin/case-studies/{{id}}
+Content-Type: application/json
+
+{ "tagline": "Updated tagline.", "atAGlance": { "peakTeamSize": 25 } }
+
+###
+POST {{base}}/admin/case-studies/{{id}}/publish
+
+###
+POST {{base}}/admin/case-studies/{{id}}/unpublish
+
+###
+DELETE {{base}}/admin/case-studies/{{id}}
+
+### ── 4. Public ─────────────────────────────────────────────
+GET {{base}}/public/case-studies?sector=eCommerce&city=Dhaka&page=1&limit=12
+
+###
+GET {{base}}/public/case-studies?q=grocery&reason=Competition&year=2021
+
+###
+GET {{base}}/public/case-studies/sample-startup-one
+
+###
+GET {{base}}/public/stats
+
+###
+GET {{base}}/public/taxonomies
+
+### ── 5. Uploads, corrections, views ────────────────────────
+POST {{base}}/admin/uploads
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="file"; filename="logo.png"
+Content-Type: image/png
+
+< ./path/to/logo.png
+--boundary--
+
+###
+POST {{base}}/public/case-studies/sample-startup-one/view
+
+###
+POST {{base}}/public/corrections
+Content-Type: application/json
+
+{
+  "caseStudySlug": "sample-startup-one",
+  "name": "A Reader",
+  "email": "reader@example.com",
+  "message": "I think the shut-down year should be 2020.",
+  "website": ""
+}
+
+###
+GET {{base}}/admin/corrections?status=new
+
+###
+PATCH {{base}}/admin/corrections/{{correctionId}}
+Content-Type: application/json
+
+{ "status": "resolved" }
+
+### ── 6. Analytics ──────────────────────────────────────────
+GET {{base}}/admin/analytics?range=28d
