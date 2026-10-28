@@ -9,6 +9,7 @@ export const SECTORS = [
   'Agritech',
   'SaaS',
   'Media',
+  'Internet search',
   'Travel',
   'Proptech',
   'Other',

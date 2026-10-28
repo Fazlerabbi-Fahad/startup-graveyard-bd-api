@@ -92,7 +92,6 @@ describe('step 3: admin case study CRUD + publish rules', () => {
       'sections.executiveSummary',
       'sections.whatWentWrong',
       'failureReasons',
-      'lessons',
       'sources',
     ]);
   });

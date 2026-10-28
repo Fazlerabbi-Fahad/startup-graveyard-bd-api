@@ -44,7 +44,6 @@ export function getPublishMissingFields(doc) {
   if (blank(doc.sections?.executiveSummary)) missing.push('sections.executiveSummary');
   if (blank(doc.sections?.whatWentWrong)) missing.push('sections.whatWentWrong');
   if (!doc.failureReasons?.length) missing.push('failureReasons');
-  if (!doc.lessons?.length) missing.push('lessons');
   if (!doc.sources?.length) missing.push('sources');
   return missing;
 }
