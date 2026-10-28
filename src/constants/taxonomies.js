@@ -29,10 +29,17 @@ export const FAILURE_CATEGORIES = [
   'Market timing',
   'Macroeconomic (FX, inflation)',
   'Legal',
+  'No business model',
+  'Funding dependency',
+  'Distribution and marketing',
+  'Product quality and momentum',
+  'Ownership and team continuity',
+  'Customer trust',
+  'Cash flow / funding model',
   'Other',
 ];
 
-export const OUTCOMES = ['Shut down', 'Acquired', 'Dormant', 'Pivoted'];
+export const OUTCOMES = ['Shut down', 'Acquired', 'Dormant', 'Pivoted', 'Defunct'];
 
 export const STATUSES = ['draft', 'published'];
 
