@@ -83,7 +83,7 @@ describe('step 4: public endpoints + stats', () => {
     assert.equal(cat['Competition'], 1);
     assert.equal(cat['Unit economics / cash burn'], 2);
     assert.equal(cat['Legal'], 0);
-    assert.equal(res.body.byFailureCategory.length, 12);
+    assert.equal(res.body.byFailureCategory.length, 19);
     const sec = Object.fromEntries(res.body.bySector.map((r) => [r.sector, r.count]));
     assert.equal(sec.Fintech, 1);
     assert.equal(sec.Logistics, 0);
@@ -102,8 +102,8 @@ describe('step 4: public endpoints + stats', () => {
 
   it('taxonomies returns the shared lists', async () => {
     const res = await ctx.request.get('/api/public/taxonomies');
-    assert.equal(res.body.sectors.length, 13);
-    assert.equal(res.body.failureCategories.length, 12);
+    assert.equal(res.body.sectors.length, 15);
+    assert.equal(res.body.failureCategories.length, 19);
     assert.deepEqual(res.body.cities, ['Dhaka', 'Chattogram', 'Sylhet', 'Khulna', 'Rajshahi', 'Other']);
   });
 });

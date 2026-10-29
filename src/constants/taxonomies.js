@@ -10,6 +10,7 @@ export const SECTORS = [
   'SaaS',
   'Media',
   'Internet search',
+  'Online classifieds',
   'Travel',
   'Proptech',
   'Other',
@@ -54,3 +55,6 @@ export const SECTION_KEYS = [
 ];
 
 export const CORRECTION_STATUSES = ['new', 'resolved'];
+
+export const MESSAGE_KINDS = ['contact', 'suggestion'];
+export const MESSAGE_STATUSES = ['new', 'read'];

@@ -8,6 +8,7 @@ import { paginated, skipFor } from '../utils/pagination.js';
 import { getPublicStats } from '../services/stats.js';
 import viewsRouter from './publicViews.js';
 import correctionsRouter from './publicCorrections.js';
+import messagesRouter from './publicMessages.js';
 
 const router = Router();
 
@@ -71,5 +72,6 @@ router.get('/taxonomies', (req, res) => {
 
 router.use('/case-studies', viewsRouter);
 router.use('/corrections', correctionsRouter);
+router.use('/messages', messagesRouter);
 
 export default router;

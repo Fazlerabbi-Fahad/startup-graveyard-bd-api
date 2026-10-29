@@ -21,5 +21,8 @@ export const loginLimiter = () =>
 export const correctionsLimiter = () =>
   limiter(60 * 60 * 1000, 3, 'Too many corrections submitted. Try again in an hour.', 'RATE_LIMITED');
 
+export const messagesLimiter = () =>
+  limiter(60 * 60 * 1000, 5, 'Too many messages sent. Try again in an hour.', 'RATE_LIMITED');
+
 /** Clears every in-memory limiter (used by tests). */
 export const resetRateLimits = () => Promise.all(stores.map((s) => s.resetAll()));
