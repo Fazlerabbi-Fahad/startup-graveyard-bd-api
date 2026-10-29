@@ -102,7 +102,7 @@ describe('step 4: public endpoints + stats', () => {
 
   it('taxonomies returns the shared lists', async () => {
     const res = await ctx.request.get('/api/public/taxonomies');
-    assert.equal(res.body.sectors.length, 15);
+    assert.equal(res.body.sectors.length, 16);
     assert.equal(res.body.failureCategories.length, 19);
     assert.deepEqual(res.body.cities, ['Dhaka', 'Chattogram', 'Sylhet', 'Khulna', 'Rajshahi', 'Other']);
   });

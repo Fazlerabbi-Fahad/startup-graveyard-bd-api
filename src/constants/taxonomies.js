@@ -11,6 +11,7 @@ export const SECTORS = [
   'Media',
   'Internet search',
   'Online classifieds',
+  'Food Delivery',
   'Travel',
   'Proptech',
   'Other',
